@@ -1,0 +1,229 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout 
+    	android:orientation="horizontal"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content" >
+    	
+	     <TextView
+	         style="@android:style/TextAppearance.Large"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:layout_marginLeft="10dp"
+	         android:layout_marginTop="10dp"
+	         android:text="@string/status"
+	         tools:context=".FramJack" />
+	     
+	    <TextView
+	        android:id="@+id/textViewStatus"
+	        style="@android:style/TextAppearance.Large"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginTop="10dp"
+	        android:text="@string/status_connected"
+	        android:textColor="#11ff11"
+	        tools:context=".FramJack" />
+	     	     
+    </LinearLayout>
+
+    
+    <LinearLayout 
+    	android:orientation="vertical"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content" >
+	    
+	    <TextView
+	        android:id="@+id/textViewInfo"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="10dp"
+	        android:text="@string/text_info"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />        
+	        
+	    <TextView
+	        android:id="@+id/textViewWarning"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="10dp"
+	        android:textColor="#FF1111"
+	        android:text="@string/text_warning"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />        
+        
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:rowCount="4"
+            android:columnCount="2"
+            android:alignmentMode="alignBounds" >
+            
+ 	        <Switch
+ 	            android:id="@+id/switch1"
+ 	            android:layout_width="wrap_content"
+ 	            android:layout_height="wrap_content"
+ 	            android:layout_margin="10dp"
+ 	            android:text="@string/out1" />
+           
+		    <LinearLayout 
+		    	android:orientation="horizontal"
+		    	android:layout_width="wrap_content"
+		    	android:layout_height="wrap_content"
+		    	android:layout_margin="10dp" >
+
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginRight="5dp"
+			        android:text="@string/in1"
+			        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+			    <TextView
+			        android:id="@+id/textViewIn1"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/low"
+			        android:textAppearance="?android:attr/textAppearanceMedium" />
+				        		    		    	
+		    </LinearLayout>	  
+		    
+		    <Switch
+		        android:id="@+id/switch2"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="10dp"
+		        android:text="@string/out2" />
+           
+		    <LinearLayout 
+		    	android:orientation="horizontal"
+		    	android:layout_width="wrap_content"
+		    	android:layout_height="wrap_content"
+		    	android:layout_margin="10dp" >
+
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginRight="5dp"
+			        android:text="@string/in2"
+			        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+			    <TextView
+			        android:id="@+id/textViewIn2"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/low"
+			        android:textAppearance="?android:attr/textAppearanceMedium" />				        		    		    	
+		    </LinearLayout>	  
+		    
+		    <Switch
+		        android:id="@+id/switch3"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="10dp"
+		        android:text="@string/out3" />
+           
+		    <LinearLayout 
+		    	android:orientation="horizontal"
+		    	android:layout_width="wrap_content"
+		    	android:layout_height="wrap_content"
+		    	android:layout_margin="10dp" >
+
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginRight="5dp"
+			        android:text="@string/in3"
+			        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+			    <TextView
+			        android:id="@+id/textViewIn3"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/voltDefault"
+			        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/voltUnits"
+			        android:textAppearance="?android:attr/textAppearanceMedium" />
+				        		    		    	
+		    </LinearLayout>	  
+		    
+		    <Switch
+		        android:id="@+id/switch4"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="10dp"
+		        android:text="@string/out4" />
+	    
+		    <LinearLayout 
+		    	android:orientation="horizontal"
+		    	android:layout_width="wrap_content"
+		    	android:layout_height="wrap_content"
+		    	android:layout_margin="10dp" >
+
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginRight="5dp"
+			        android:text="@string/in4"
+			        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+			    <TextView
+			        android:id="@+id/textViewIn4"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/voltDefault"
+			        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/voltUnits"
+			        android:textAppearance="?android:attr/textAppearanceMedium" />	    	
+		    </LinearLayout>	                   
+
+        </GridLayout>
+	 
+    <LinearLayout 
+    	android:orientation="horizontal"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content" >
+    	
+	     <TextView
+	         style="@android:style/TextAppearance.Large"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:layout_marginLeft="10dp"
+	         android:layout_marginTop="10dp"
+	         android:text="@string/temperature"
+	         tools:context=".FramJack" />
+	     
+	    <TextView
+	        android:id="@+id/textViewTemp"
+	        style="@android:style/TextAppearance.Large"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginTop="10dp"
+	        android:text="@string/temperatureDefault"
+	        android:textColor="#1111ff"
+	        tools:context=".FramJack" />
+
+	    <TextView
+	        style="@android:style/TextAppearance.Large"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginTop="10dp"
+	        android:text="@string/temperatureUnits"
+	        android:textColor="#1111ff"
+	        tools:context=".FramJack" />
+	     	     
+    </LinearLayout>        
+    </LinearLayout>
+</LinearLayout>

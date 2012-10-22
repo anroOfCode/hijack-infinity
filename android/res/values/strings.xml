@@ -1,0 +1,33 @@
+<resources>
+
+    <string name="app_name">FRAMJack</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_fram_jack">FRAMJack</string>
+	<string name="out1">Out 1:</string>
+	<string name="out2">Out 2:</string>
+	<string name="out3">Out 3:</string>
+	<string name="out4">Out 4:</string>
+	<string name="in1">In 1:</string>
+	<string name="in2">In 2:</string>
+	<string name="in3">In 3:</string>
+	<string name="in4">In 4:</string>
+
+	<string name="high">High</string>
+	<string name="low">Low</string>
+		
+	<string name="voltUnits">V</string>
+	<string name="voltDefault">0.00</string>
+	
+	<string name="temperature">Temperature:</string>
+	<string name="temperatureUnits">°F</string>
+	<string name="temperatureDefault">70.0</string>
+	
+	<string name="status">Status:</string>
+	<string name="status_connected">Connected</string>
+	<string name="status_disconnected">Disconnected</string>
+	
+	<string name="text_info">When a FRAMJack is connected to this sample application it will read four predefined inputs, and output four TTL-level pin values. It will continuously communicate with FRAMJack.</string>
+	<string name="text_warning">WARNING: This application has not been tested on all Android phones. It makes use of advanced audio processing APIs. Compatibility is not gaurenteed.</string>
+	
+	
+</resources>

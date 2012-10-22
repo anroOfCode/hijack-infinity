@@ -1,0 +1,80 @@
+What needs to be done:
+------------------------
+
+For capture (decoding) of signal:
+
+- Hook Comparator E to Timer A.
+- Capture on high or low transistions over VCC/2. 
+- Call some magic interrupt function for now
+- Get the elapsed time from the last tigger
+- Provide a way to switch from capturing on low->high transistion to high->low transition to both.
+
+
+For output (encoding) of signal:
+
+- Set TimerB to call an interrupt function
+- Repeatedly. 
+
+Capturing ADC Signals
+
+- Whatever
+
+
+Signaling Protocol:
+------------------------
+
+0xCC <- Packet start byte
+0x04 <- Packet length byte
+.
+.
+.
+0x__ <- Byte addition checksum
+
+
+Inner Packet Format:
+--------------------
+Byte 1 - 
+
+
+	//if ((LED_OUT & LED_0) > 0) {
+	//	LED_OUT &= ~LED_0;
+	//}
+	//else {
+	//	LED_OUT ^= LED_0;
+	//}
+
+	*((uint16_t*) 0x1970) = 0xFFFE;
+	*((uint16_t*) 0x1972) = val;
+	*((uint8_t*) 0x1974) = pinValue;
+
+void comparatorCallback (void) {
+	LED_OUT ^= LED_0;
+}
+
+
+void byteReceiveCallback (uint8_t byte) {
+	if (byte == 0xBC) {
+		if ((LED_OUT & LED_0) == 0){
+			LED_OUT ^= LED_0;
+		} else {
+			LED_OUT &= ~LED_0;
+		}
+	}
+}
+
+uint8_t outMessage[] = {0xDD, 0x0A, 0xFF, 0x3F, 0xFF, 0x3F, 
+	0xFF, 0x3F, 0xFF, 0x2F, 0xFF, 0xE7};
+uint8_t outMessagePosition = 0;
+
+void byteSentCallback (void) {
+	csm_sendByte(outMessage[outMessagePosition++]);
+	if (outMessagePosition == 12) outMessagePosition = 0;
+}
+
+
+		//util_disableInterrupt();
+		//csm_sendByte(0xBC);
+		//util_enableInterrupt();
+		util_delayMs(500);
+
+	csm_sendByte(outMessage[outMessagePosition++]);		

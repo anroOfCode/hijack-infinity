@@ -1,0 +1,13 @@
+examples
+android/bin
+android/gen
+hijack/build
+*.hex
+*.elf
+*.map
+out.txt
+androbin_copyToGit.py
+ignore_mspgcc.sh
+.svn
+docs
+

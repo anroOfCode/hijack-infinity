@@ -1,0 +1,34 @@
+
+TARGET	= out
+MCU	= msp430fr5969
+
+BUILD    = build
+
+SRC = src/*.c src/peripherals/*.c src/lib/*.c
+
+INCLUDES = -I/usr/local/msp430/include -Isrc/include
+CFLAGS   = -mmcu=$(MCU) -g -Wall -Wunused $(INCLUDES)
+ASFLAGS  = -mmcu=$(MCU) -x assembler-with-cpp -Wa,-gstabs
+LDFLAGS  = -mmcu=$(MCU) -Wl,-Map=$(TARGET).map
+
+CC       = msp430-gcc
+LD       = msp430-gcc
+AS       = msp430-gcc
+OBJCOPY  = msp430-objcopy
+SIZE     = msp430-size
+MAKETXT  = srec_cat
+CP       = cp -p
+RM       = rm -f
+
+
+: foreach $(SRC) |> $(CC) -c $(CFLAGS) %f -o %o |> %B.o {objs}
+
+: {objs}         |> $(CC) %f $(LDFLAGS) $(LIBS) -o $(TARGET).elf |> $(TARGET).elf $(TARGET).map
+: $(TARGET).elf  |> $(OBJCOPY) -O ihex %f %o                     |> %B.hex {ihex}
+: {ihex}         |> $(MAKETXT) -O %o -TITXT %f -I                |> %B.txt {txt}
+: {txt}          |> unix2dos -n %f %o                            |> %B.txtd
+
+
+.gitignore
+
+
