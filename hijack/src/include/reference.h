@@ -15,9 +15,16 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+
 #ifndef __REFERENCE_H__
 #define __REFERENCE_H__
 
+#if defined(MSP430FR5969) || defined(MSP430F1611)
+
+#include <inttypes.h>
+#include "msp430.h"
+ 
 typedef enum reference_voltage {
 	REFVOLT_12,
 	REFVOLT_20,
@@ -27,5 +34,7 @@ typedef enum reference_voltage {
 void reference_enable ();
 
 void reference_set (reference_voltage_e rv);
+
+#endif
 
 #endif

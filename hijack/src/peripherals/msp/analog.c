@@ -14,24 +14,35 @@
  *  You should have received a copy of the GNU General Public License
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
- 
-#include "config.h"
 
-#ifndef __PTIMER_H__
-#define __PTIMER_H__
+ #include "analog.h"
 
-#if defined(MSP430FR5969) || defined(MSP430F1611)
+ #if defined(MSP430FR5969) || defined(MSP430F1611)
 
-#include "msp430.h"
-#include <inttypes.h>
+void analog_init(void) {
+	// Turn on the 2.0V Reference Generator
+	reference_set(REFVOLT_20);
+	reference_enable();	
+	adc_init2();
+}
 
-typedef void ptimer_callback(void);
+void analog_sampleAll(void) {
+	adc_runConversion();
+}
 
+uint16_t analog_readInput(enum analog_inputEnum input) {
+	switch (input) {
+		case analog_input_vcc:
+			return adc_getResult(0);
+		case analog_input_extTemp:
+			return adc_getResult(1);
+		case analog_input_in1:
+			return adc_getResult(2);
+		case analog_input_in2:
+			return adc_getResult(3);
+	}
 
-void ptimer_init ();
-void ptimer_start (uint16_t ms, ptimer_callback* cb);
-void ptimer_stop ();
-
-#endif
+	return -1;
+}
 
 #endif

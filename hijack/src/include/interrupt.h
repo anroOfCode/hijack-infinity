@@ -15,8 +15,12 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+
 #ifndef __INTERRUPT_H__
 #define __INTERRUPT_H__
+
+#if defined(MSP430FR5969) || defined(MSP430F1611)
 
 typedef void interrupt_callback(void);
 
@@ -37,5 +41,7 @@ void interrupt_remove (uint8_t port, uint8_t pin);
 void interrupt_edge_direction (uint8_t port,
 	                           uint8_t pin,
 	                           interrupt_edge_e edge);
+
+#endif
 
 #endif

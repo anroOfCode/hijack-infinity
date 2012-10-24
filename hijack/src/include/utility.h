@@ -15,8 +15,12 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+
 #ifndef __UTILITY_H__
 #define __UTILITY_H__
+
+#if defined(MSP430FR5969) || defined(MSP430F1611)
 
 #include <msp430.h>
 #include <inttypes.h>
@@ -36,5 +40,7 @@ void util_delayMs(uint16_t ms);
 // DO NOT USE THIS FUNCTION
 // unless you want to delay less than a MS
 void util_delayCycles (uint16_t cycles);
+
+#endif
 
 #endif

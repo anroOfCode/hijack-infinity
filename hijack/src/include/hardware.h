@@ -14,11 +14,13 @@
  *  You should have received a copy of the GNU General Public License
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
+ 
+#include "config.h"
 
 #ifndef __HARDWARE_H__
 #define __HARDWARE_H__
 
-
+#ifdef MSP430FR5969
 #define LED_0 BIT0
 #define LED_OUT P1OUT
 #define LED_DIR P1DIR
@@ -66,5 +68,55 @@
 #define AIN2_ACH 5
 #define TEMP_ACH 10
 #define VREF_ACH 13
+
+#endif
+
+#ifdef MSP430F1611
+
+#define LED_PORT 1
+#define LED_PIN 0
+
+#define MIC_PORT 4
+#define MIC_PIN 0
+
+#define LEFT_PORT 2
+#define LEFT_PIN 3
+
+#define VREF_PORT 6
+#define VREF_PIN 1
+
+#define OUT1_PORT 5
+#define OUT1_PIN 0
+
+#define OUT2_PORT 5
+#define OUT2_PIN 1
+
+#define OUT3_PORT 5
+#define OUT3_PIN 2
+
+#define OUT4_PORT 5
+#define OUT4_PIN 3
+
+#define AIN1_PORT 6
+#define AIN1_PIN 4
+
+#define AIN2_PORT 6
+#define AIN2_PIN 5
+
+#define TEMP_PORT 6
+#define TEMP_PIN 6
+
+#define DIN1_PORT 4
+#define DIN1_PIN 5
+
+#define DIN2_PORT 4
+#define DIN2_PIN 6
+
+#define AIN1_ACH 4
+#define AIN2_ACH 5
+#define TEMP_ACH 6
+#define VREF_ACH 1
+
+#endif
 
 #endif

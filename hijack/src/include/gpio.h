@@ -15,8 +15,12 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+
 #ifndef __GPIO_H__
 #define __GPIO_H__
+
+#if defined(MSP430FR5969) || defined(MSP430F1611)
 
 #include <msp430.h>
 #include <inttypes.h>
@@ -32,6 +36,8 @@ void gpio_set (uint8_t port, uint8_t pin);
 void gpio_clear (uint8_t port, uint8_t pin);
 void gpio_toggle(uint8_t port, uint8_t pin);
 uint8_t gpio_read(uint8_t port, uint8_t pin);
+
+#endif
 
 #endif
 

@@ -195,8 +195,11 @@ void csm_init(void) {
         
     csm_state.lastRx.elapsedTime = 0;
     csm_state.lastRx.signal = 0;
-    csm_state.threshold = 325;
-    csm_state.deltaT = 775;
+
+    // See config.h for declaration of these
+    // platform specific parameters.
+    csm_state.threshold = THRESHOLD;
+    csm_state.deltaT = DELTAT;
 
     csm_state.txBitPosition = 0;
     csm_state.txBytePosition = 0;

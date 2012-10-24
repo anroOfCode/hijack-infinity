@@ -15,9 +15,12 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+
 #ifndef __SSTIMER_H__
 #define __SSTIMER_H__
 
+#if defined(MSP430FR5969) || defined(MSP430F1611)
 
 #include "msp430.h"
 #include <inttypes.h>
@@ -28,7 +31,6 @@ typedef void sstimer_callback(void);
 void sstimer_init ();
 void sstimer_set (uint16_t ms, sstimer_callback* cb);
 
-
-
 #endif
 
+#endif

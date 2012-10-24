@@ -28,7 +28,7 @@ void pal_registerCaptureTimerCb(pal_captureTimerCb * fn) {
 	pal_captureTimerCbPtr = fn;
 }
 
-#ifdef MSP430FR5969
+#if defined(MSP430FR5969) || defined(MSP430F1611)
 void pal_init(void) {
 	util_disableWatchdog();
 	util_boardInit();

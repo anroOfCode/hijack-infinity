@@ -15,9 +15,12 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+ 
 #ifndef __CTIMER_H__
 #define __CTIMER_H__
 
+#if defined(MSP430FR5969) || defined(MSP430F1611)
 
 #include "msp430.h"
 #include <inttypes.h>
@@ -30,6 +33,8 @@ void ctimer_set_callback (ctimer_callback* cb);
 void ctimer_clear (void);
 void ctimer_stop (void);
 uint8_t ctimer_readLine (void);
+
+#endif
 
 #endif
 

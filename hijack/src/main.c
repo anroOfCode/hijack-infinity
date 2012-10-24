@@ -125,6 +125,10 @@ void initializeSystem(void) {
 	fe_startSending();
 }
 
+// This is the main loop. It's not very
+// power efficient right now, it should
+// do some microcontroller sleep commands
+// and use wakeups.
 int main () {
 	initializeSystem();
 	// TODO: Add sleep commands!

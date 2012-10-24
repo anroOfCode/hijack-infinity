@@ -18,7 +18,17 @@
 #ifndef __ANALOG_H__
 #define __ANALOG_H__
 
+#include "config.h"
+
 #include <stdint.h>
+#include "msp430.h"
+#include <inttypes.h>
+#include <stddef.h>
+#include "adc.h"
+#include "reference.h"
+#include "hardware.h"
+
+#if defined(MSP430FR5969) || defined(MSP430F1611)
 
 enum analog_inputEnum {
 	analog_input_vcc,
@@ -35,5 +45,7 @@ void analog_init(void);
 uint16_t analog_readInput(enum analog_inputEnum input);
 
 void analog_sampleAll(void);
+
+#endif
 
 #endif

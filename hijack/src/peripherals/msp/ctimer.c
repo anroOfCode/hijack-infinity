@@ -15,38 +15,53 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "config.h"
-
-#ifndef __COMPARATOR_H__
-#define __COMPARATOR_H__
+#include "ctimer.h"
 
 #if defined(MSP430FR5969) || defined(MSP430F1611)
-
-#include "hardware.h"
-#include "msp430.h"
-#include <inttypes.h>
  
-typedef void comparator_callback(void);
+// Comparator timer
+// A2
 
-// Puts the input pin in special input
-// mode such that the special function is
-// selected.
-void comparator_enablePin (uint8_t port, uint8_t pin);
+ctimer_callback* ctimer_callback_fn;
 
-// Detaches the specified pin from the comparator
-// so it can be measured.
-void comparator_disablePin (uint8_t port, uint8_t pin);
 
-uint8_t comparator_getChannel (uint8_t port, uint8_t pin);
+void ctimer_init (void) {
+	TA2CTL   = TASSEL__SMCLK + MC__CONTINUOUS + ID__8;
 
-void comparator_init ();
-void comparator_on ();
-void comparator_off ();
+	// CM   = capture on both edges
+	// CCIS = select comparator e
+	// CAP  = capture mode
+	// CCIE = interrupt enable
+	TA2CCTL1 = CM_3 + CCIS_1 + CAP + CCIE;
+}
 
-void comparator_setup (uint8_t compare_pin_neg, uint8_t compare_pin_pos);
+void ctimer_set_callback (ctimer_callback* cb) {
+	ctimer_callback_fn = cb;
+}
 
-void comparator_enableInterrupt (comparator_callback* cb);
+void ctimer_clear (void) {
+	TA2R = 0x00;
+}
 
-#endif
+void ctimer_stop (void) {
+	TA2CTL &= MC__STOP;
+}
+
+uint8_t ctimer_readLine (void) {
+	return !!(TA2CCTL1 & CCI);
+}
+
+#pragma vector = TIMER2_A1_VECTOR
+__interrupt void Timer_A2 (void) {
+	uint16_t capture_reg;
+	capture_reg = TA2CCR1;
+
+	if (capture_reg > 0x100) {
+		ctimer_clear();
+		ctimer_callback_fn(capture_reg);
+	}
+
+	TA2CCTL1 &= ~CCIFG;
+}
 
 #endif

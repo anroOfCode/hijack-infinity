@@ -10,6 +10,7 @@ BUILD    = build
 SOURCES = $(wildcard src/*.c)
 SOURCES += $(wildcard src/peripherals/*.c)
 SOURCES += $(wildcard src/lib/*.c)
+SOURCES += $(wildcard src/peripherals/msp/*.c)
 #SOURCES = $(foreach file,${SOURCES_A},$(notdir ${file}))
 
 

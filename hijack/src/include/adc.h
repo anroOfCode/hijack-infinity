@@ -15,10 +15,17 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+
 #ifndef __ADC_H__
 #define __ADC_H__
 
+#if defined(MSP430FR5969) || defined(MSP430F1611)
+
+#include "msp430.h"
 #include <inttypes.h>
+#include <stddef.h>
+#include "utility.h"
 
 // Cause a single conversion or a sequence to start.
 void adc_runConversion ();
@@ -28,5 +35,7 @@ void adc_init2(void);
 // Retrieve the result of a conversion. Waits for the busy bit to be cleared
 //  before reading the value.
 uint16_t adc_getResult (uint8_t conv_num);
+
+#endif
 
 #endif

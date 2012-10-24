@@ -16,3 +16,13 @@
  */
 
 #define MSP430FR5969
+
+#if defined(MSP430F1611) || defined(MSP430FR5969)
+
+// Used by the coding state machine to identify
+// long and short pulses.
+#define THRESHOLD 325
+#define DELTAT 775
+
+#endif
+//#define MSP430F1611

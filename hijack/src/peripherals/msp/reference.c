@@ -14,24 +14,30 @@
  *  You should have received a copy of the GNU General Public License
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
- 
-#include "config.h"
 
-#ifndef __PTIMER_H__
-#define __PTIMER_H__
+ #include "reference.h"
 
 #if defined(MSP430FR5969) || defined(MSP430F1611)
 
-#include "msp430.h"
-#include <inttypes.h>
+void reference_enable () {
+	while (REFCTL0 & REFGENBUSY);
+	REFCTL0 |= REFON;
+}
 
-typedef void ptimer_callback(void);
+void reference_set (reference_voltage_e rv) {
+	uint8_t ref_voltage = 0;
 
+	while (REFCTL0 & REFGENBUSY);
 
-void ptimer_init ();
-void ptimer_start (uint16_t ms, ptimer_callback* cb);
-void ptimer_stop ();
+	switch (rv) {
+	  case REFVOLT_12: ref_voltage = REFVSEL_0; break;
+	  case REFVOLT_20: ref_voltage = REFVSEL_1; break;
+	  case REFVOLT_25: ref_voltage = REFVSEL_2; break;
+	}
 
-#endif
+	REFCTL0 = 0;
+	REFCTL0 = (REFCTL0 & ~REFVSEL_3) | ref_voltage;
+
+}
 
 #endif

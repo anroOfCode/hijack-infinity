@@ -15,6 +15,8 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+ 
 #ifndef __FRAMINGENGINE_H__
 #define __FRAMINGENGINE_H__
 
