@@ -17,8 +17,11 @@
 
 #include "comparator.h"
 
-#if defined(MSP430FR5969) || defined(MSP430F1611)
- 
+#if defined(MSP430FR5969)
+
+#include "hardware.h"
+#include "msp430.h"
+
 comparator_callback* comparator_callback_fn;
 
 void comparator_enablePin (uint8_t port, uint8_t pin) {

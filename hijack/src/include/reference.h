@@ -15,12 +15,12 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "config.h"
-
 #ifndef __REFERENCE_H__
 #define __REFERENCE_H__
 
-#if defined(MSP430FR5969) || defined(MSP430F1611)
+#include "config.h"
+
+#if defined(MSP430FR5969)
 
 #include <inttypes.h>
 #include "msp430.h"

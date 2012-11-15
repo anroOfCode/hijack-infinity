@@ -15,9 +15,9 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
- #include "adc.h"
+#include "adc.h"
 
- #if defined(MSP430FR5969) || defined(MSP430F1611)
+#if defined(MSP430FR5969)
 
 void adc_runConversion () { 
 	ADC12CTL0 |= ADC12ENC + ADC12SC;

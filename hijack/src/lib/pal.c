@@ -17,6 +17,26 @@
 
 #include "pal.h"
 
+#if defined(MSP430FR5969) || defined(MSP430F1611)
+
+#include <msp430.h>
+#include "gpio.h"
+#include "utility.h"
+#include "hardware.h"
+#include "analog.h"
+
+#endif
+
+#if defined(MSP430FR5969)
+#include "comparator.h"
+#include "ptimer.h"
+#include "ctimer.h"
+#endif
+
+#if defined(MSP430F1611)
+#include "f1611_timer.h"
+#endif
+
 pal_periodicTimerCb * pal_periodicTimerCbPtr;
 pal_captureTimerCb * pal_captureTimerCbPtr;
 
@@ -52,42 +72,6 @@ void pal_init(void) {
 	gpio_clear(LED_PORT, LED_PIN);
 
 	util_enableInterrupt();
-
-	ctimer_set_callback(pal_captureTimerFn);
-}
-
-void pal_startTimers(void) {
-	// Initialize the hardware to drive the
-	// signal processing layers.
-	comparator_enablePin(LEFT_PORT, LEFT_PIN);
-	comparator_enablePin(VREF_PORT, VREF_PIN);
-
-	comparator_init();
-	comparator_setup(
-		comparator_getChannel(LEFT_PORT, LEFT_PIN),
-		comparator_getChannel(VREF_PORT, VREF_PIN)
-	);
-	comparator_on();
-
-	ctimer_init();
-	ptimer_init();
-
-	ptimer_start(TIMER_TICKS, pal_periodicTimerFn);
-	// Wait 100ms for everything to stabalize.
-	util_delayMs(100);
-}
-
-void pal_periodicTimerFn(void) {
-	if (pal_periodicTimerCbPtr != 0) {
-		pal_periodicTimerCbPtr();
-	}
-}
-
-void pal_captureTimerFn(uint16_t elapsedTime) {
-	uint8_t pinValue = !!ctimer_readLine();
-	if (pal_captureTimerCbPtr != 0) {
-		pal_captureTimerCbPtr(elapsedTime, pinValue);
-	}
 }
 
 void pal_sampleAnalogGpios(void) {
@@ -141,9 +125,76 @@ uint16_t pal_readAnalogGpio(enum pal_gpioEnum pin) {
 			return 0;
 	}
 }
+#endif
+
+#if defined(MSP430FR5969)
+void pal_startTimers(void) {
+	// Initialize the hardware to drive the
+	// signal processing layers.
+	ctimer_set_callback(pal_captureTimerFn);
+
+	comparator_enablePin(LEFT_PORT, LEFT_PIN);
+	comparator_enablePin(VREF_PORT, VREF_PIN);
+
+	comparator_init();
+	comparator_setup(
+		comparator_getChannel(LEFT_PORT, LEFT_PIN),
+		comparator_getChannel(VREF_PORT, VREF_PIN)
+	);
+	comparator_on();
+
+	ctimer_init();
+	ptimer_init();
+
+	ptimer_start(TIMER_TICKS, pal_periodicTimerFn);
+	// Wait 100ms for everything to stabalize.
+	util_delayMs(100);
+}
+
+void pal_periodicTimerFn(void) {
+	if (pal_periodicTimerCbPtr != 0) {
+		pal_periodicTimerCbPtr();
+	}
+}
+
+void pal_captureTimerFn(uint16_t elapsedTime) {
+	uint8_t pinValue = !!ctimer_readLine();
+	if (pal_captureTimerCbPtr != 0) {
+		pal_captureTimerCbPtr(elapsedTime, pinValue);
+	}
+}
+
+
 
 void pal_loopDelay(void) {
 	__delay_cycles(400000);
 }
+#endif
 
+#if defined(MSP430F1611)
+
+void pal_startTimers(void) {
+	timer_init();
+	timer_setCaptureCallback(pal_captureTimerFn);
+	timer_setPeriodicCallback(pal_periodicTimerFn);
+	timer_start();
+	util_delayMs(100);
+}
+
+void pal_periodicTimerFn(void) {
+	if (pal_periodicTimerCbPtr != 0) {
+		pal_periodicTimerCbPtr();
+	}
+}
+
+void pal_captureTimerFn(uint16_t elapsedTime) {
+	uint8_t pinValue = !!timer_readCaptureLine();
+	if (pal_captureTimerCbPtr != 0) {
+		pal_captureTimerCbPtr(elapsedTime, pinValue);
+	}
+}
+
+void pal_loopDelay(void) {
+	__delay_cycles(400000);
+}
 #endif

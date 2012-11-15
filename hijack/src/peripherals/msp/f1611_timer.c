@@ -15,22 +15,37 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "config.h"
+#include "f1611_timer.h"
 
-#ifndef __SSTIMER_H__
-#define __SSTIMER_H__
+#ifdef MSP430F1611
 
-#if defined(MSP430FR5969) || defined(MSP430F1611)
+#include "ptimer.h"
+#include "ctimer.h"
 
-#include "msp430.h"
-#include <inttypes.h>
+#include <msp430.h>
 
-typedef void sstimer_callback(void);
+void timer_init (void) {
 
+}
 
-void sstimer_init ();
-void sstimer_set (uint16_t ms, sstimer_callback* cb);
+void timer_start (void) {
 
-#endif
+}
+
+void timer_setCaptureCallback (timer_captureCallback* cb) {
+
+}
+
+void timer_setPeriodicCallback (timer_periodicCallback* cb) {
+
+}
+
+void timer_stop (void) {
+
+}
+
+uint8_t timer_readCaptureLine (void) {
+	return 0;
+}
 
 #endif

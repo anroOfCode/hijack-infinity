@@ -15,9 +15,9 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
- #include "analog.h"
+#include "analog.h"
 
- #if defined(MSP430FR5969) || defined(MSP430F1611)
+#if defined(MSP430FR5969)
 
 void analog_init(void) {
 	// Turn on the 2.0V Reference Generator
@@ -43,6 +43,20 @@ uint16_t analog_readInput(enum analog_inputEnum input) {
 	}
 
 	return -1;
+}
+
+#endif
+
+#if defined(MSP430F1611)
+void analog_init(void) {
+;
+}
+
+void analog_sampleAll(void) {
+}
+
+uint16_t analog_readInput(enum analog_inputEnum input) {
+	return 0;
 }
 
 #endif

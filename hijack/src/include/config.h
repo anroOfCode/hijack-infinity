@@ -15,8 +15,13 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define MSP430FR5969
-//#define MSP430F1611
+#ifdef __MSP430F1611__
+	#define MSP430F1611
+#endif
+
+#ifdef __MSP430FR5969__
+	#define MSP430FR5969
+#endif
 
 #if defined(MSP430FR5969)
 

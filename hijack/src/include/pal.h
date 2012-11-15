@@ -24,29 +24,13 @@
   * in config.h.
   */ 
 
-#include "config.h"
-
 #ifndef __PAL_H__
 #define __PAL_H__
 
+#include "config.h"
+
 #include <inttypes.h>
 #include <stdio.h>
-
-#if defined(MSP430FR5969) || defined(MSP430F1611)
-
-#include <msp430.h>
-
-#include "ptimer.h"
-#include "ctimer.h"
-#include "comparator.h"
-
-#include "gpio.h"
-
-#include "utility.h"
-#include "hardware.h"
-#include "analog.h"
-
-#endif
 
 //////////////////////
 // Public Interface

@@ -15,10 +15,10 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "config.h"
-
 #ifndef __UTILITY_H__
 #define __UTILITY_H__
+
+#include "config.h"
 
 #if defined(MSP430FR5969) || defined(MSP430F1611)
 

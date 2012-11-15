@@ -15,15 +15,13 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if defined(MSP430FR5969) || defined(MSP430F1611)
+ #include "interrupt.h"
+
+#if defined(MSP430FR5969)
 
 #include "msp430.h"
-#include <inttypes.h>
+
 #include <stddef.h>
-
-#include "interrupt.h"
-
-
 
 interrupt_callback* cb_fns[32];
 

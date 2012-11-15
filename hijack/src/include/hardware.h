@@ -29,11 +29,10 @@
 // Analog In 2: J2 (right), P6
 //////////////////////////////////////
 
- 
-#include "config.h"
-
 #ifndef __HARDWARE_H__
 #define __HARDWARE_H__
+
+#include "config.h"
 
 #ifdef MSP430FR5969
 

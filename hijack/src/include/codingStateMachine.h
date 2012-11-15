@@ -15,10 +15,10 @@
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "config.h"
-
 #ifndef __CSM_H__
 #define __CSM_H__
+
+#include "config.h"
 
 #include <inttypes.h>
 

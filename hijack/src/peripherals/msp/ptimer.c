@@ -17,9 +17,10 @@
 
 #include "ptimer.h"
 
- #if defined(MSP430FR5969) || defined(MSP430F1611)
-
+#if defined(MSP430FR5969)
+ 
 // Periodic timer
+#include "msp430.h"
 
 uint8_t          ptimer_inuse = 0;
 ptimer_callback* ptimer_callback_fn;

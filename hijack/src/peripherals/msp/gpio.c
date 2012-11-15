@@ -35,6 +35,10 @@ void gpio_init (uint8_t port, uint8_t pin, gpio_dir_e dir) {
 		case 2: P2DIR = (P2DIR & clear) | set; break;
 		case 3: P3DIR = (P3DIR & clear) | set; break;
 		case 4: P4DIR = (P4DIR & clear) | set; break;
+#ifdef MSP430F1611
+		case 5: P5DIR = (P5DIR & clear) | set; break;
+		case 6: P6DIR = (P6DIR & clear) | set; break;
+#endif
 	}
 }
 
@@ -48,6 +52,10 @@ void gpio_set_clear (uint8_t port, uint8_t pin, uint8_t set) {
 		case 2: P2OUT = (P2OUT & clear) | set; break;
 		case 3: P3OUT = (P3OUT & clear) | set; break;
 		case 4: P4OUT = (P4OUT & clear) | set; break;
+#ifdef MSP430F1611
+		case 5: P5OUT = (P5OUT & clear) | set; break;
+		case 6: P6OUT = (P6OUT & clear) | set; break;
+#endif
 	}
 }
 
@@ -77,6 +85,12 @@ uint8_t gpio_read(uint8_t port, uint8_t pin) {
 			return (P3IN >> pin) & 0x01;
 		case 4:
 			return (P4IN >> pin) & 0x01;
+#ifdef MSP430F1611
+		case 5:
+			return (P5IN >> pin) & 0x01;
+		case 6:
+			return (P6IN >> pin) & 0x01;
+#endif
 	}
 	return 0;
 }

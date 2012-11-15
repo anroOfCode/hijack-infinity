@@ -6,6 +6,8 @@
 TARGET     = out
 MCU        = msp430fr5969
 
+#MCU = msp430f1611
+
 BUILD    = build
 SOURCES = $(wildcard src/*.c)
 SOURCES += $(wildcard src/peripherals/*.c)

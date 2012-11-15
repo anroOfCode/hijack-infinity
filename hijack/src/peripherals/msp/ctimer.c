@@ -16,9 +16,11 @@
  */
 
 #include "ctimer.h"
-
-#if defined(MSP430FR5969) || defined(MSP430F1611)
+\
+#if defined(MSP430FR5969)
  
+#include "msp430.h"
+
 // Comparator timer
 // A2
 
