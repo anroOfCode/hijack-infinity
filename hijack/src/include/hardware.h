@@ -14,6 +14,21 @@
  *  You should have received a copy of the GNU General Public License
  *  along with hijack-infinity.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+// Hardware Pin Mappings for boards:
+///////////////////////////////////////
+// HIJACK REVD BOARD WITH MSP430F1611:
+//
+// Digital In 1: J4 (left), P1
+// Digital In 2: J4 (left), P2
+// Digital Out 1: J4 (left), P3
+// Digital Out 2: J4 (left), P4
+// Digital Out 3: J4 (left), P5
+// Digital Out 4: J4 (left), P6
+// Analog In 1: J2 (right), P5
+// Analog In 2: J2 (right), P6
+//////////////////////////////////////
+
  
 #include "config.h"
 
@@ -21,6 +36,7 @@
 #define __HARDWARE_H__
 
 #ifdef MSP430FR5969
+
 #define LED_0 BIT0
 #define LED_OUT P1OUT
 #define LED_DIR P1DIR

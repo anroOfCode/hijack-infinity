@@ -104,16 +104,54 @@ void util_boardInit(void) {
 
 #ifdef MSP430F1611
 
-	// TODO: Determine best startup
-	// state for pins.
+	// Pin setup determiend from TinyOS.
 
-/*	P1DIR = 0xFF;
-	P2DIR = 0xFF;
-	P3DIR = 0xFF;
-	P4DIR = 0xFF;
-	P5DIR = 0xFF;
-	P6DIR = 0xFF;
-*/
+	P1SEL = 0;
+	P2SEL = 0;
+	P3SEL = 0;
+	P4SEL = 0;
+	//P5SEL = 0x20; // output SMCLK on P5.5
+    P5SEL = 0;
+	P6SEL = 0;
+
+	P1OUT = 0x00;
+	P1DIR = 0x00;
+
+	P2OUT = 0x00;
+	P2DIR = 0x00;
+
+	P3OUT = 0x00;
+	P3DIR = 0x00;
+
+	P4OUT = 0x00;
+	P4DIR = 0x00;
+
+	P5OUT = 0x00;
+
+	//P5DIR = 0x20;
+	P5DIR = 0x00;
+
+	P6OUT = 0x00;
+	P6DIR = 0x00;
+
+	P1IE = 0;
+	P2IE = 0;
+
+	// Setup Clocks
+    // BCSCTL1
+    // .XT2OFF = 1; disable the external oscillator for SCLK and MCLK
+    // .XTS = 0; set low frequency mode for LXFT1
+    // .DIVA = 0; set the divisor on ACLK to 1
+    // .RSEL, do not modify
+    BCSCTL1 = XT2OFF | (BCSCTL1 & (RSEL2|RSEL1|RSEL0));
+
+    // BCSCTL2
+    // .SELM = 0; select DCOCLK as source for MCLK
+    // .DIVM = 0; set the divisor of MCLK to 1
+    // .SELS = 0; select DCOCLK as source for SCLK
+    // .DIVS = 2; set the divisor of SCLK to 4
+    // .DCOR = 1; select internal resistor for DCO
+    BCSCTL2 = DIVS1 | DCOR;
 #endif
 	
 }
