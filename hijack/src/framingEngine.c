@@ -173,6 +173,15 @@ void fe_buildTransmitBuffer(void) {
 		fe_state.outgoingPktSize + 1;
 
 	for (i = 0; i < fe_state.outgoingPktSize; i++) {
+
+		// Properly escape invalid characters.
+		if (fe_state.outgoingPktBuffer[i] == 0xDD ||
+			fe_state.outgoingPktBuffer[i] == 0xCC) {
+			fe_state.outgoingBuffer[fe_state.outgoingBufferPos++] = 0xCC;
+			sum += 0xCC;
+			fe_state.outgoingBuffer[1]++;
+		}
+
 		fe_state.outgoingBuffer[fe_state.outgoingBufferPos++] =
 			fe_state.outgoingPktBuffer[i];
 
