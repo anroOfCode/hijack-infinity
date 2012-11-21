@@ -119,6 +119,12 @@ void initializeSystem(void) {
 	// Start the interrupt-driven timers.
 	pal_startTimers();
 	
+	while(1)
+	{
+		pal_setDigitalGpio(pal_gpio_led, 1);
+		pal_setDigitalGpio(pal_gpio_led, 0);
+	}
+	
 	// Start the transmit callback-driven
 	// loop
 	fe_writeTxBuffer(outMessage, 9);

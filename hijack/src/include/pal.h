@@ -51,7 +51,8 @@ enum pal_gpioEnum {
 	pal_gpio_dout2,
 	pal_gpio_dout3,
 	pal_gpio_dout4,
-	pal_gpio_mic
+	pal_gpio_mic,
+	pal_gpio_led
 };
 
 ////////////////////////////////////

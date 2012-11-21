@@ -4,9 +4,9 @@
 # The TXT file is used for BSL loading, the ELF can be used for JTAG use
 
 TARGET     = out
-MCU        = msp430fr5969
+#MCU        = msp430fr5969
 
-#MCU = msp430f1611
+MCU = msp430f1611
 
 BUILD    = build
 SOURCES = $(wildcard src/*.c)

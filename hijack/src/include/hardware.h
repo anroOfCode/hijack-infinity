@@ -27,6 +27,7 @@
 // Digital Out 4: J4 (left), P6
 // Analog In 1: J2 (right), P5
 // Analog In 2: J2 (right), P6
+// 
 //////////////////////////////////////
 
 #ifndef __HARDWARE_H__
@@ -89,7 +90,7 @@
 #ifdef MSP430F1611
 
 #define LED_PORT 1
-#define LED_PIN 0
+#define LED_PIN 2
 
 #define MIC_PORT 4
 #define MIC_PIN 0

@@ -106,6 +106,9 @@ int8_t pal_setDigitalGpio(enum pal_gpioEnum pin, uint8_t val) {
 		case pal_gpio_mic:
 			gpio_set_clear(MIC_PORT, MIC_PIN, val);
 			return 0;
+		case pal_gpio_led:
+			gpio_set_clear(LED_PORT, LED_PIN, val);
+			return 0;
 		default:
 			return -1;
 	}
