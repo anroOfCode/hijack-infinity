@@ -36,7 +36,7 @@
 
 // Used by the coding state machine to identify
 // long and short pulses.
-#define THRESHOLD 8
-#define DELTAT 17
+#define THRESHOLD 4
+#define DELTAT 20
 
 #endif

@@ -22,6 +22,8 @@
 #include "ptimer.h"
 #include "ctimer.h"
 
+#include "pal.h"
+
 #include <msp430.h>
 
 void timer_init (void) {
@@ -40,14 +42,14 @@ void timer_init (void) {
 
 	///////////////////////////
 	// TimerA - Capture Timer
-	TACTL = TASSEL_1 + TACLR + TAIE;
-	TACCTL0 = CM_3 + CCIS_1 + CAP + CCIE;
+	TACTL = TASSEL_1 + TACLR;
+	TACCTL1 = CM_3 + CCIS_1 + CAP + CCIE;
 
 	///////////////////////////
 	// TimerB - Periodic Timer
 	TBCTL = TBSSEL_1 + TBIE + TBCLR;
-	TBCCTL0 = CCIE;
-	TBCCR0 = 17;
+	TBCCTL0 = 0;
+	TBCCR0 = DELTAT;
 }
 
 void timer_start (void) {
@@ -56,11 +58,11 @@ void timer_start (void) {
 }
 
 void timer_setCaptureCallback (timer_captureCallback* cb) {
-
+	timer_captureCbPtr = cb;
 }
 
 void timer_setPeriodicCallback (timer_periodicCallback* cb) {
-
+	timer_periodicCbPtr = cb;
 }
 
 void timer_stop (void) {
@@ -69,7 +71,27 @@ void timer_stop (void) {
 }
 
 uint8_t timer_readCaptureLine (void) {
-	return !!(TACCTL0 & CCI);
+	return !(TACCTL1 & CCI);
 }
+
+#pragma vector = TIMERA1_VECTOR
+__interrupt void Timer_A1 (void) {
+	
+	uint16_t captureReg = TAR;
+
+	if (captureReg > 5) {
+		TAR = 0;
+		timer_captureCbPtr(captureReg);
+	}
+
+	TACCTL1 &= ~CCIFG;
+}
+
+#pragma vector = TIMERB1_VECTOR
+__interrupt void Timer_B1 (void) {
+	timer_periodicCbPtr();
+	TBCTL &= ~TBIFG;
+}
+
 
 #endif

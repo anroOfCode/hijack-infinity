@@ -32,7 +32,12 @@ public class SerialDecoder {
 	private int _currentEdgeLength = 0;
 	private boolean _currentEdgeHigh = false;
 	
-	private int _threshold = 7;
+	// FOR THE MSP430FR5969:
+	//private int _threshold = 7;
+	
+	// FOR THE MSP430F1611:
+	private int _threshold = 12;
+	
 	private int _deltaT = 0;
 	
 	private ReceiveState _rxState = ReceiveState.IDLE;
@@ -126,7 +131,8 @@ public class SerialDecoder {
 			advanceReceiveDataState();
 		}
 		else {
-			System.out.println("Error.");
+			System.out.println("EL: " + _currentEdgeLength + " DT: " + _deltaT);
+			//System.out.println("Error.");
 			_rxState = ReceiveState.IDLE;
 		}
 	}
@@ -141,8 +147,9 @@ public class SerialDecoder {
 			advanceReceiveDataState();
 		}
 		else {
+			System.out.println("BEL: " + _currentEdgeLength + " DT: " + _deltaT);
 			_rxState = ReceiveState.IDLE;
-			System.out.println("Error.");
+			//System.out.println("Error.");
 		}
 	}
 

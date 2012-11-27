@@ -57,6 +57,7 @@ void captureTimerFn(uint16_t elapsedTime, uint8_t isHigh) {
 
 void packetReceivedCallback(uint8_t * buf, uint8_t len) {
 	if (len == 1) {
+		pal_setDigitalGpio(pal_gpio_led, 1);
 		pal_setDigitalGpio(pal_gpio_dout1, ((buf[0] >> 0) & 0x01));
 		pal_setDigitalGpio(pal_gpio_dout2, ((buf[0] >> 1) & 0x01));
 		pal_setDigitalGpio(pal_gpio_dout3, ((buf[0] >> 2) & 0x01));
@@ -118,13 +119,7 @@ void initializeSystem(void) {
 
 	// Start the interrupt-driven timers.
 	pal_startTimers();
-	
-	while(1)
-	{
-		pal_setDigitalGpio(pal_gpio_led, 1);
-		pal_setDigitalGpio(pal_gpio_led, 0);
-	}
-	
+
 	// Start the transmit callback-driven
 	// loop
 	fe_writeTxBuffer(outMessage, 9);
@@ -139,11 +134,20 @@ int main () {
 	initializeSystem();
 	// TODO: Add sleep commands!
 
+		/*while(1)
+	{
+		pal_setDigitalGpio(pal_gpio_led, 1);
+		pal_setDigitalGpio(pal_gpio_led, 0);
+	}*/
+
+
 	while(1) {
+		//pal_setDigitalGpio(pal_gpio_led, 0);
 		updateDigitalOutputBuffer();
 		updateAnalogOutputBuffer();
-
+		//pal_setDigitalGpio(pal_gpio_led, 1);
 		pal_loopDelay();
+
 	}
     return 0;
 }

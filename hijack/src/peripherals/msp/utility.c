@@ -145,13 +145,16 @@ void util_boardInit(void) {
     // .RSEL, do not modify
     BCSCTL1 = XT2OFF | (BCSCTL1 & (RSEL2|RSEL1|RSEL0));
 
+    BCSCTL1 |= RSEL0 + RSEL1 + RSEL2;
+    DCOCTL |= DCO0 + DCO1 + DCO2;
     // BCSCTL2
     // .SELM = 0; select DCOCLK as source for MCLK
     // .DIVM = 0; set the divisor of MCLK to 1
     // .SELS = 0; select DCOCLK as source for SCLK
     // .DIVS = 2; set the divisor of SCLK to 4
     // .DCOR = 1; select internal resistor for DCO
-    BCSCTL2 = DIVS1 | DCOR;
+    //BCSCTL2 = DIVS1 | DCOR;
+
 #endif
 	
 }

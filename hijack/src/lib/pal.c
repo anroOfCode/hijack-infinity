@@ -180,7 +180,9 @@ void pal_startTimers(void) {
 	timer_init();
 	timer_setCaptureCallback(pal_captureTimerFn);
 	timer_setPeriodicCallback(pal_periodicTimerFn);
+
 	timer_start();
+
 	util_delayMs(100);
 }
 
