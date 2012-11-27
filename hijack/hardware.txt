@@ -78,3 +78,7 @@ void byteSentCallback (void) {
 		util_delayMs(500);
 
 	csm_sendByte(outMessage[outMessagePosition++]);		
+
+
+
+	tos-bsl --swap-reset-test --invert-reset --invert-test -r -e -I -p out.hex

@@ -95,7 +95,7 @@ void csm_receiveDataNext(void) {
 // Region: Transmit state machine
 /////////////////////////////////
 uint8_t csm_transmitIdle(void) {
-    if (csm_state.txBitPosition && csm_state.txIdleCycles < 15) {
+    if (csm_state.txBitPosition && csm_state.txIdleCycles < IDLE_CYCLES) {
         csm_state.txIdleCycles++;
     }
     return csm_state.txBitPosition;
@@ -155,7 +155,7 @@ uint8_t csm_advanceTransmitState(void) {
 void csm_finishAdvanceTransmitState(void) {
     csm_state.txBitPosition = csm_state.txBitPosition == 0 ? 1 : 0;
 
-    if (csm_state.txIdleCycles == 15) {
+    if (csm_state.txIdleCycles == IDLE_CYCLES) {
         csm_state.txCallback();
         csm_state.txIdleCycles++;
     }
@@ -164,7 +164,7 @@ void csm_finishAdvanceTransmitState(void) {
 
 uint8_t csm_sendByte(uint8_t out) {
     if (csm_state.txState == csm_transmitState_idle &&
-        csm_state.txIdleCycles > 14) {
+        csm_state.txIdleCycles > IDLE_CYCLES - 1) {
         csm_state.txState = csm_transmitState_pending;
 
         // Parity + (LSB) data + startbit

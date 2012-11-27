@@ -25,6 +25,8 @@
 
 #if defined(MSP430FR5969)
 
+#define IDLE_CYCLES 4
+
 // Used by the coding state machine to identify
 // long and short pulses.
 #define THRESHOLD 325
@@ -34,9 +36,10 @@
 
 #if defined(MSP430F1611)
 
+#define IDLE_CYCLES 4
 // Used by the coding state machine to identify
 // long and short pulses.
 #define THRESHOLD 4
-#define DELTAT 20
+#define DELTAT 13
 
 #endif

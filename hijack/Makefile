@@ -17,7 +17,7 @@ SOURCES += $(wildcard src/peripherals/msp/*.c)
 
 
 INCLUDES = -I/usr/local/msp430/include -Isrc/include
-CFLAGS   = -mmcu=$(MCU) -g -Wall -Wunused $(INCLUDES)   
+CFLAGS   = -mmcu=$(MCU) -O2 -g -Wall -Wunused $(INCLUDES)   
 ASFLAGS  = -mmcu=$(MCU) -x assembler-with-cpp -Wa,-gstabs
 LDFLAGS  = -mmcu=$(MCU) -Wl,-Map=$(TARGET).map
 
