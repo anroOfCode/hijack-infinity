@@ -14,7 +14,7 @@ MSP403F1611 Support
 ===================
 Support for the MSP430F1611, compatiable with the HiJack boards sold at SeeedStudio, is at a semi-working state. Currently we operate at a rather slow baud rate, but are in-fact able to send bidirectional digital data. You'll need a way to program the HiJack board, I'd recommend using the HiJack programmer. HiJack was originally designed to be programmed with the binary serial loaded from TinyOS, take a look at the firmware installed on the Seeed studio WiKi page for an example of how to program it. Once you have the tos-bsl you can program it using the following command string:
 
-tos-bsl --swap-reset-test --invert-reset --invert-test -r -e -I -p out.hex
+```tos-bsl --swap-reset-test --invert-reset --invert-test -r -e -I -p out.hex```
 
 Some issues with the current implementation
 -------------------------------------------
