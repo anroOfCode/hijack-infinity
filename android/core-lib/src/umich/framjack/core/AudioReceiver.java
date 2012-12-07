@@ -168,7 +168,7 @@ public class AudioReceiver {
 			// Toss the power signal on there. We keep a running signal across calls to this function
 			// with the _powerFrequencyPos var to ensure the wave is continuous. 
 			_stereoBuffer[i*2+1] =  (short) boundToShort(
-				Math.sin(powerMutiplier * _powerFrequencyPos++) * 32786
+				Math.sin(powerMutiplier * _powerFrequencyPos++) * 32760
 			);	
 		}
 		

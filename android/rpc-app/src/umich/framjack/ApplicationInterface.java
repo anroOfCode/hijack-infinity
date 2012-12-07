@@ -49,7 +49,6 @@ public class ApplicationInterface {
 		_framer = new FramingEngine();
 		_serialDecoder = new SerialDecoder();
 		
-		
 		_serialDecoder.registerBytesAvailableListener(_bytesAvailableListener);
 		_serialDecoder.registerByteSentListener(_byteSentListener);
 		_framer.registerIncomingPacketListener(_incomingPacketListener);
@@ -60,7 +59,6 @@ public class ApplicationInterface {
 			_framer.transmitByte(toSend[i]);
 		}
 		_framer.transmitEnd();
-		
 	}
 	
 	///////////////////////////////////////////////

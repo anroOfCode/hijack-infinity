@@ -194,6 +194,10 @@ public class SerialDecoder {
 		}
 	}
 	
+	public void setFreq(int freq) {
+		_audioReceiver.setPowerFrequency(freq);
+	}
+	
 	/////////////////////////////
 	// Listener Functions
 	/////////////////////////////
