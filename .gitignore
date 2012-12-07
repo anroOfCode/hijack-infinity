@@ -10,4 +10,5 @@ androbin_copyToGit.py
 ignore_mspgcc.sh
 .svn
 docs
-
+bin
+gen
