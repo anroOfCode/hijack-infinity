@@ -1,0 +1,5 @@
+# cache for current jar dependecy. DO NOT EDIT.
+# format is <lastModified> <length> <SHA-1> <path>
+# Encoding is UTF-8
+1354853472000 349252 612846c9857077a039b533718f72db3bc041d389 /home/androbin/shed/projects/hijack-fram/android/rpc-app/libs/android-support-v4.jar
+1354854036000 349252 612846c9857077a039b533718f72db3bc041d389 /home/androbin/shed/projects/hijack-fram/android/core-lib/libs/android-support-v4.jar

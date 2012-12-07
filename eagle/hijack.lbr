@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -3899,6 +3899,51 @@ Samtec TMM single row, throug-hole</description>
 <text x="-5.08" y="-2.54" size="1.016" layer="25" font="vector" ratio="12" rot="R90">&gt;NAME</text>
 <text x="5.715" y="-2.54" size="1.016" layer="27" font="vector" ratio="12" rot="R90">&gt;VALUE</text>
 </package>
+<package name="30PIN_HIJACK">
+<pad name="P$30" x="-9" y="11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$29" x="-7" y="11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$28" x="-5" y="11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$27" x="-3" y="11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$26" x="-1" y="11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$25" x="1" y="11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$24" x="3" y="11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$23" x="5" y="11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$22" x="7" y="11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$21" x="9" y="11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$1" x="-9" y="-11.43" drill="0.89" diameter="1.3462" shape="square"/>
+<pad name="P$2" x="-7" y="-11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$3" x="-5" y="-11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$4" x="-3" y="-11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$5" x="-1" y="-11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$6" x="1" y="-11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$7" x="3" y="-11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$8" x="5" y="-11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$9" x="7" y="-11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$10" x="9" y="-11.43" drill="0.89" diameter="1.3462"/>
+<pad name="P$11" x="11.43" y="-9" drill="0.89" diameter="1.3462" rot="R90"/>
+<pad name="P$12" x="11.43" y="-7" drill="0.89" diameter="1.3462" rot="R90"/>
+<pad name="P$13" x="11.43" y="-5" drill="0.89" diameter="1.3462" rot="R90"/>
+<pad name="P$14" x="11.43" y="-3" drill="0.89" diameter="1.3462" rot="R90"/>
+<pad name="P$15" x="11.43" y="-1" drill="0.89" diameter="1.3462" rot="R90"/>
+<pad name="P$16" x="11.43" y="1" drill="0.89" diameter="1.3462" rot="R90"/>
+<pad name="P$17" x="11.43" y="3" drill="0.89" diameter="1.3462" rot="R90"/>
+<pad name="P$18" x="11.43" y="5" drill="0.89" diameter="1.3462" rot="R90"/>
+<pad name="P$19" x="11.43" y="7" drill="0.89" diameter="1.3462" rot="R90"/>
+<pad name="P$20" x="11.43" y="9" drill="0.89" diameter="1.3462" rot="R90"/>
+</package>
+<package name="TSOT-23-5">
+<smd name="1" x="-0.95" y="-1.31" dx="0.62" dy="1.22" layer="1"/>
+<smd name="2" x="0" y="-1.31" dx="0.62" dy="1.22" layer="1"/>
+<smd name="3" x="0.95" y="-1.31" dx="0.62" dy="1.22" layer="1"/>
+<smd name="4" x="0.95" y="1.31" dx="0.62" dy="1.22" layer="1"/>
+<smd name="5" x="-0.95" y="1.31" dx="0.62" dy="1.22" layer="1"/>
+<wire x1="-1.45" y1="0.8" x2="-1.45" y2="-0.8" width="0.127" layer="21"/>
+<wire x1="-1.45" y1="-0.8" x2="1.45" y2="-0.8" width="0.127" layer="21"/>
+<wire x1="1.45" y1="-0.8" x2="1.45" y2="0.8" width="0.127" layer="21"/>
+<wire x1="1.45" y1="0.8" x2="-1.45" y2="0.8" width="0.127" layer="21"/>
+<text x="-1.72" y="-0.1" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center">&gt;NAME</text>
+<text x="2.74" y="0" size="1.016" layer="27" font="vector" ratio="12" rot="R90" align="bottom-center">&gt;VALUE</text>
+</package>
 </packages>
 <symbols>
 <symbol name="10PINHEADER">
@@ -6591,7 +6636,7 @@ Samtec TMM single row, throug-hole</description>
 <symbol name="TMP006">
 <pin name="SCL" x="-15.24" y="2.54" visible="pin" length="middle"/>
 <pin name="SDA" x="-15.24" y="0" visible="pin" length="middle"/>
-<pin name="#DRDY" x="-15.24" y="-2.54" visible="pin" length="middle"/>
+<pin name="!DRDY!" x="-15.24" y="-2.54" visible="pin" length="middle"/>
 <pin name="AGND" x="-2.54" y="-17.78" visible="pin" length="middle" rot="R90"/>
 <pin name="DGND" x="2.54" y="-17.78" visible="pin" length="middle" rot="R90"/>
 <pin name="VCC" x="0" y="17.78" visible="pin" length="middle" rot="R270"/>
@@ -6769,6 +6814,58 @@ Samtec TMM single row, throug-hole</description>
 <wire x1="-10.16" y1="-15.24" x2="-10.16" y2="12.7" width="0.254" layer="94"/>
 <text x="-10.16" y="13.97" size="2.54" layer="95">&gt;NAME</text>
 <text x="-10.16" y="-19.304" size="2.54" layer="96">&gt;VALUE</text>
+</symbol>
+<symbol name="HIJACK_INTERFACE">
+<pin name="P2.6" x="-17.78" y="-15.24" length="middle"/>
+<pin name="P5.0" x="17.78" y="0" length="middle" rot="R180"/>
+<pin name="P5.1" x="17.78" y="2.54" length="middle" rot="R180"/>
+<pin name="P5.2" x="17.78" y="5.08" length="middle" rot="R180"/>
+<pin name="P5.3" x="17.78" y="7.62" length="middle" rot="R180"/>
+<pin name="AUDIO_MIC" x="17.78" y="10.16" length="middle" rot="R180"/>
+<pin name="AUDIO_LEFT" x="17.78" y="12.7" length="middle" rot="R180"/>
+<pin name="VHARVEST" x="17.78" y="15.24" length="middle" rot="R180"/>
+<pin name="AUDIO_RIGHT" x="17.78" y="17.78" length="middle" rot="R180"/>
+<pin name="P6.4" x="-17.78" y="7.62" length="middle"/>
+<pin name="TCK" x="-17.78" y="10.16" length="middle"/>
+<pin name="P3.0" x="-17.78" y="-17.78" length="middle"/>
+<pin name="P2.0" x="-17.78" y="-12.7" length="middle"/>
+<pin name="RST" x="-17.78" y="12.7" length="middle"/>
+<pin name="VCC" x="-17.78" y="17.78" length="middle"/>
+<pin name="GND" x="-17.78" y="15.24" length="middle"/>
+<pin name="P6.5" x="-17.78" y="5.08" length="middle"/>
+<pin name="P6.6" x="-17.78" y="2.54" length="middle"/>
+<pin name="P6.7" x="-17.78" y="0" length="middle"/>
+<pin name="P3.6" x="-17.78" y="-2.54" length="middle"/>
+<pin name="P3.7" x="-17.78" y="-5.08" length="middle"/>
+<pin name="P1.2" x="-17.78" y="-7.62" length="middle"/>
+<pin name="P1.3" x="-17.78" y="-10.16" length="middle"/>
+<pin name="P4.6" x="17.78" y="-2.54" length="middle" rot="R180"/>
+<pin name="P4.5" x="17.78" y="-5.08" length="middle" rot="R180"/>
+<pin name="P3.5" x="17.78" y="-7.62" length="middle" rot="R180"/>
+<pin name="P3.4" x="17.78" y="-10.16" length="middle" rot="R180"/>
+<pin name="P3.3" x="17.78" y="-12.7" length="middle" rot="R180"/>
+<pin name="P3.2" x="17.78" y="-15.24" length="middle" rot="R180"/>
+<pin name="P3.1" x="17.78" y="-17.78" length="middle" rot="R180"/>
+<wire x1="12.7" y1="20.32" x2="-12.7" y2="20.32" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="20.32" x2="-12.7" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="-20.32" x2="12.7" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-20.32" x2="12.7" y2="20.32" width="0.254" layer="94"/>
+<text x="-10.16" y="20.32" size="1.778" layer="95">&gt;NAME</text>
+<text x="-10.16" y="-22.86" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+<symbol name="ADP2108">
+<description>Buck regulator</description>
+<pin name="VIN" x="-12.7" y="2.54" visible="pin" length="middle"/>
+<pin name="EN" x="-12.7" y="-2.54" visible="pin" length="middle"/>
+<pin name="GND" x="0" y="-17.78" visible="pin" length="middle" rot="R90"/>
+<pin name="SW" x="12.7" y="2.54" visible="pin" length="middle" rot="R180"/>
+<pin name="FB" x="12.7" y="-2.54" visible="pin" length="middle" rot="R180"/>
+<wire x1="-7.62" y1="7.62" x2="-7.62" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-12.7" x2="7.62" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-12.7" x2="7.62" y2="7.62" width="0.254" layer="94"/>
+<wire x1="7.62" y1="7.62" x2="-7.62" y2="7.62" width="0.254" layer="94"/>
+<text x="0" y="10.16" size="1.27" layer="95" ratio="12" align="bottom-center">&gt;NAME</text>
+<text x="5.08" y="-15.24" size="1.27" layer="96" ratio="12" align="bottom-center">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -7108,7 +7205,7 @@ Samtec TMM single row, throug-hole</description>
 <devices>
 <device name="" package="YZF(S-XBGA-N8)">
 <connects>
-<connect gate="G$1" pin="#DRDY" pad="C2"/>
+<connect gate="G$1" pin="!DRDY!" pad="C2"/>
 <connect gate="G$1" pin="ADR0" pad="C1"/>
 <connect gate="G$1" pin="ADR1" pad="B1"/>
 <connect gate="G$1" pin="AGND" pad="A2"/>
@@ -7353,6 +7450,72 @@ Auto-Polarity, Ultralow Voltage Step-Up Converter and Power Manager</description
 <technologies>
 <technology name="">
 <attribute name="DIGIKEY" value="LTC3109EGN#PBF-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="HIJACK" prefix="J">
+<gates>
+<gate name="G$1" symbol="HIJACK_INTERFACE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="30PIN_HIJACK">
+<connects>
+<connect gate="G$1" pin="AUDIO_LEFT" pad="P$28"/>
+<connect gate="G$1" pin="AUDIO_MIC" pad="P$27"/>
+<connect gate="G$1" pin="AUDIO_RIGHT" pad="P$30"/>
+<connect gate="G$1" pin="GND" pad="P$2"/>
+<connect gate="G$1" pin="P1.2" pad="P$11"/>
+<connect gate="G$1" pin="P1.3" pad="P$12"/>
+<connect gate="G$1" pin="P2.0" pad="P$13"/>
+<connect gate="G$1" pin="P2.6" pad="P$14"/>
+<connect gate="G$1" pin="P3.0" pad="P$15"/>
+<connect gate="G$1" pin="P3.1" pad="P$16"/>
+<connect gate="G$1" pin="P3.2" pad="P$17"/>
+<connect gate="G$1" pin="P3.3" pad="P$18"/>
+<connect gate="G$1" pin="P3.4" pad="P$19"/>
+<connect gate="G$1" pin="P3.5" pad="P$20"/>
+<connect gate="G$1" pin="P3.6" pad="P$9"/>
+<connect gate="G$1" pin="P3.7" pad="P$10"/>
+<connect gate="G$1" pin="P4.5" pad="P$21"/>
+<connect gate="G$1" pin="P4.6" pad="P$22"/>
+<connect gate="G$1" pin="P5.0" pad="P$23"/>
+<connect gate="G$1" pin="P5.1" pad="P$24"/>
+<connect gate="G$1" pin="P5.2" pad="P$25"/>
+<connect gate="G$1" pin="P5.3" pad="P$26"/>
+<connect gate="G$1" pin="P6.4" pad="P$5"/>
+<connect gate="G$1" pin="P6.5" pad="P$6"/>
+<connect gate="G$1" pin="P6.6" pad="P$7"/>
+<connect gate="G$1" pin="P6.7" pad="P$8"/>
+<connect gate="G$1" pin="RST" pad="P$3"/>
+<connect gate="G$1" pin="TCK" pad="P$4"/>
+<connect gate="G$1" pin="VCC" pad="P$1"/>
+<connect gate="G$1" pin="VHARVEST" pad="P$29"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="ADP2108" prefix="U">
+<description>IC REG BUCK SYNC 3V .6A TSOT23-5</description>
+<gates>
+<gate name="G$1" symbol="ADP2108" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TSOT-23-5">
+<connects>
+<connect gate="G$1" pin="EN" pad="3"/>
+<connect gate="G$1" pin="FB" pad="4"/>
+<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="SW" pad="5"/>
+<connect gate="G$1" pin="VIN" pad="1"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="ADP2108AUJZ-3.0-R7CT-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
